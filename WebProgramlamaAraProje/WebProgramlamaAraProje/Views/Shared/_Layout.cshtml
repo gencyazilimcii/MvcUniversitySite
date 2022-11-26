@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>education</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="~/edulab/css/all.css">
+    <link rel="stylesheet" type="text/css" href="~/edulab/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="~/edulab/css/lightbox.css">
+    <link rel="stylesheet" type="text/css" href="~/edulab/css/flexslider.css">
+    <link rel="stylesheet" type="text/css" href="~/edulab/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/edulab/css/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/edulab/css/jquery.rateyo.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/jquery.mmenu.all.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/meanmenu.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="~/edulab/inner-page-style.css">
+    <link rel="stylesheet" type="text/css" href="~/edulab/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+</head>
+<body>
+    <div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+        <header class="site-header">
+            <div class="top-header">
+                <div class="container">
+                    <div class="top-header-left">
+                        <div class="top-header-block">
+                            <a href="mailto:info@educationpro.com" itemprop="email"><i class="fas fa-envelope"></i> info@duzce.edu.tr</a>
+                        </div>
+                        <div class="top-header-block">
+                            <a href="tel:+0850 800 81 81" itemprop="telephone"><i class="fas fa-phone"></i> 0850 800 81 81 </a>
+                        </div>
+                    </div>
+
+                    <div class="top-header-right">
+                        <div class="social-block">
+                            <ul class="social-list">
+                                <li><a href=""><i class="fab fa-viber"></i></a></li>
+                                <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+                                <li><a href=""><i class="fab fa-facebook-messenger"></i></a></li>
+                                <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                                <li><a href=""><i class="fab fa-skype"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="login-block">
+
+                            <a asp-action="Admin">Admin </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="container">
+                    <div itemprop="logo">
+                        <img src="~/edulab/images/logo.png" width="230" height="112" alt="Logo Image">
+                        <!-- <h1>Education</h1> -->
+                    </div>
+                    <div class="nav-wrap">
+                        <nav class="nav-desktop">
+                            <ul class="menu-list">
+
+                                @*<li class="menu-parent">
+                                        Courses
+                                        <ul class="sub-menu">
+                                            <li><a href="#">Child</a></li>
+                                            <li><a href="#">Child</a></li>
+                                            <li class="menu-parent">
+                                                Child
+                                                <ul class="sub-menu">
+                                                    <li><a href="">Grand-child</a></li>
+                                                    <li><a href="">Grand-child</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>*@
+                                @*<li class="menu-parent">
+                                        News
+                                        <ul class="sub-menu">
+                                            <li><a href="#">Child</a></li>
+                                            <li><a href="#">Child</a></li>
+                                        </ul>
+                                    </li>*@
+                                <li><a asp-action="Index">Home</a></li>
+                                <li><a asp-action="Announcement" > Announcements </a></li>
+                                <li><a href="">Gallery</a></li>
+
+                                @*<li><a href="Home/Login">Login</a></li>*@
+
+
+                            </ul>
+                        </nav>
+                        <div id="bar">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <div id="close">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @RenderBody()
+            <!-- Top header Close -->
+            <!--<div class="banner">
+            <div class="owl-four owl-carousel" itemprop="image">
+                <img src="~/edulab/images/slider3.jpg" alt="Image of Bannner" width="1200" height="600">
+                <img src="~/edulab/images/slider.jfif" alt="Image of Bannner" width="1200" height="600">
+                <img src="~/edulab/images/slider2.jpg" alt="Image of Bannner" width="1200" height="600">
+            </div>
+            <div class="container" itemprop="description">
+                <h1>Welcome To Duzce University</h1>-->
+            @*<h3>With our advance search feature you can now find the trips for you...</h3>*@
+            <!--</div>
+                <div id="owl-four-nav" class="owl-nav"></div>
+            </div>-->
+        </header>
+        <!-- Header Close -->
+
+
+        <footer class="page-footer" itemprop="footer" itemscope itemtype="http://schema.org/WPFooter">
+            <div class="footer-first-section">
+                <div class="container">
+                    <div class="box-wrap" itemprop="about">
+
+                        <p>Düzce ili idari yapı olarak 278 köy,114 mahalle ve 2 beldeden oluşmaktadır. Yüzölçümü 2593,00 km2, nüfusu ise 395.679’tur.  </p>
+
+                        <h4><a href="tel:+0850 800 81 81"><i class="fas fa-phone"></i> 0850 800 81 81 </a></h4>
+                        <h4><a href="mailto:info@educationpro.com"><i class="fas fa-envelope"></i> info@duzce.edu.tr</a></h4>
+                        <h4><a href=""><i class="fas fa-map-marker-alt"></i>DÜZCE - TÜRKİYE</a></h4>
+                    </div>
+                </div>
+            </div>
+            <!-- End of box-Wrap -->
+            <div class="footer-second-section">
+                <div class="container">
+                    <hr class="footer-line">
+                    <ul class="social-list">
+                        <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fab fa-skype"></i></a></li>
+                        <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                    <hr class="footer-line">
+                </div>
+            </div>
+            <div class="footer-last-section">
+                <div>
+
+                </div>
+                <div class="container">
+                    <p>Copyright 2022 &copy; duzce.edu.tr <span> | </span> Theme designed and developed by <a href="https://labtheme.com">Düzce Üniversitesi</a></p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script type="text/javascript" src="~/edulab/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/edulab/js/lightbox.js"></script>
+    <script type="text/javascript" src="~/edulab/js/all.js"></script>
+    <script type="text/javascript" src="~/edulab/js/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="~/edulab/js/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/edulab/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="~/edulab/js/jquery.rateyo.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery.mmenu.all.js"></script> -->
+    <!-- <script type="text/javascript" src="js/jquery.meanmenu.min.js"></script> -->
+    <script type="text/javascript" src="~/edulab/js/custom.js"></script>
+</body>
+</html>
