@@ -11,6 +11,10 @@ namespace WebProgramlamaAraProje.Models
         IQueryable<Admin> Admins { get; }
 
         void AddAnnouncement(Announcement a);
-        CollageDbContext GetContext();
+        void DeleteAnnouncement(int? id);
+        void UpdateAnnouncement(Announcement ano);
+        Announcement FindAnnouncement(int? anoID);
+        Admin FindAdmin(int? adminID);
+        void Save();
     }
 }

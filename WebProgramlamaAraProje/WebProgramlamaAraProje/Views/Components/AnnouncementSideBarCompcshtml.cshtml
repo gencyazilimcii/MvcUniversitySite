@@ -1,0 +1,14 @@
+﻿@model Announcement
+
+<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+    <div class="img-wrap" itemprop="image"><img src="~/edulab/images/course-pic.jpg" alt="courses picture"></div>
+    <a href="#" class="learn-desining-banner" itemprop="name"> @Model.DuyuruBaslik >>></a>
+    <div class="box-body" itemprop="description">
+        <p>@Model.DuyuruIcerik</p>
+        <section itemprop="time">
+            <p><span>Tarih ve Saat:</span> @Model.DuyuruTarih.ToString() </p>
+            @*<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+            <p><span>Fee:</span> 4,00,000</p>*@
+        </section>
+    </div>
+</div>

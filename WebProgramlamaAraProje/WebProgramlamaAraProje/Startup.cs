@@ -37,23 +37,29 @@ namespace WebProgramlamaAraProje
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapDefaultControllerRoute();
+
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "Delete",
+                    pattern: "{cotroller=Home}/{action=Delete}/{anoID?}");
+                
+                endpoints.MapControllerRoute(
+                   name: "Admin",
+                   pattern: "{cotroller=Home}/{action=Admin}/{username?}");
+
             });
 
-           
-
-
+            //LoginPOST(string username, string password)
         }
     }
 }

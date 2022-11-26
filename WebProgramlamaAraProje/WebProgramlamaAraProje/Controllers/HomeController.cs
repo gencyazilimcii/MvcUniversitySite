@@ -9,39 +9,116 @@ using WebProgramlamaAraProje.Models;
 
 namespace WebProgramlamaAraProje.Controllers
 {
+    public struct AdminStack
+    {
+        public Admin admin;
+        public IQueryable<Announcement> announcements;
+    }
+
     public class HomeController : Controller
     {
         private ICollageRepository repository;
 
-        public HomeController(ICollageRepository repo)
+        public HomeController(ICollageRepository c)
         {
-            repository = repo;
+            repository = c;
         }
        
         public IActionResult Index()
         {
+            CurrentAdmin = null;
+
             return View();
         }
 
+        public IActionResult LogOut()
+        {
+            return RedirectToAction("Index");
+        }
 
-
-
-      
         public IActionResult Login()
         {
             return View();
         }
 
-        public IActionResult Admin()
+        Admin CurrentAdmin = null;
+
+        public IActionResult LoginPOST(string username, string password)
         {
-            return View(repository.Announcements);
+            Admin admin = null;
+            
+            try
+            {
+                admin = repository.Admins.Where(i => i.AdminKullaniciAdi == username).First();
+            }
+            catch (Exception)
+            {
+
+            }
+
+            if (admin == null) return RedirectToAction("Login");
+
+            if (admin.AdminSifre == password)
+            {
+                CurrentAdmin = admin;
+                return RedirectToAction("Admin", admin);
+            }
+                
+            else return RedirectToAction("Login");
         }
 
-        public IActionResult Delete(Announcement a)
+        public IActionResult Admin(Admin a)
         {
-            // İşlemleri yapar
+            AdminStack temp = new AdminStack { admin = a, announcements = repository.Announcements};
 
-            return Admin();
+            return View(temp);
+        }
+
+        public IActionResult Delete(int? anoID)
+        {
+            if (repository.Announcements.Any(x => x.DuyuruID == anoID))
+            {
+                if (anoID == null)
+                    return RedirectToAction("Admin");
+
+                repository.DeleteAnnouncement(anoID);
+                repository.Save();
+
+                //Silme İşlemi Başarılı
+            }
+
+            return RedirectToAction("Admin");
+        }
+
+        // GET
+        public IActionResult UpdateAnnouncement(int? anoID)
+        {
+            if (anoID == null)
+                return NotFound();
+
+            var ano = repository.FindAnnouncement(anoID);
+
+            if (ano == null) return NotFound();
+
+            return View(ano);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateAnnouncement(Announcement ano)
+        {
+            if (ModelState.IsValid)
+            {
+               // ano.DuyuruTarih = repository.FindAnnouncement(ano.DuyuruID).DuyuruTarih;
+                repository.UpdateAnnouncement(ano);
+                repository.Save();
+
+                return RedirectToAction("Admin");
+            }
+            else
+            {
+                return RedirectToAction("NewAnnouncement");
+            }
         }
 
         [HttpGet]
@@ -51,20 +128,23 @@ namespace WebProgramlamaAraProje.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult NewAnnouncement(Announcement a)
         {
             if (ModelState.IsValid)
             {
+                // Başarılı olursa
+
                 a.DuyuruTarih = DateTime.Now;
                 repository.AddAnnouncement(a);
-                repository.GetContext().SaveChanges();
+                repository.Save();
 
-                // Başarılı olursa
-                return Admin();
+                return RedirectToAction("Admin");
             }
             else
             {
-                //// Hata alınırsa
+                //Verilen değerler yanlışsa
+
                 return View();
             }
         }

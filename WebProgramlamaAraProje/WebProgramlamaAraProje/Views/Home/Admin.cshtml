@@ -1,5 +1,5 @@
 ﻿@using WebProgramlamaAraProje.Models
-@model IQueryable<Announcement>
+@model WebProgramlamaAraProje.Controllers.AdminStack
 
     @{
         Layout = null;
@@ -50,8 +50,8 @@
             <!-- Sidebar Start -->
             <div class="sidebar pe-4 pb-3">
                 <nav class="navbar bg-secondary navbar-dark">
-                    <a href="~/admin/index.html" class="navbar-brand mx-4 mb-3">
-                        <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+                    <a class="navbar-brand mx-4 mb-3">
+                        <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Admin Panel</h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
                         <div class="position-relative">
@@ -61,18 +61,18 @@
                         <div class="ms-3">
                            
                         
-                            <h6>fgc </h6>                           
+                            <h6>@Model.admin.AdminKullaniciAdi</h6>                           
                         
                             
                             <span>Admin</span>
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="/Home/Admin" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                        @*<a href="/Home/Admin" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>*@
 
 
 
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Announcements</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Duyurular</a>
 
 
                     </div>
@@ -159,95 +159,81 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                 <img class="rounded-circle me-lg-2" src="~/admin/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <span class="d-none d-lg-inline-flex">John Doe</span>
+                                <span class="d-none d-lg-inline-flex">@Model.admin.AdminAdi @Model.admin.AdminSoyadi</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                                 <a href="#" class="dropdown-item">My Profile</a>
                                 <a href="#" class="dropdown-item">Settings</a>
-                                <a href="#" class="dropdown-item">Log Out</a>
+                                <a asp-controller="Home" asp-action="LogOut" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
                     </div>
                 </nav>
                 <!-- Navbar End -->
                 <!-- Sale & Revenue Start -->
-                <div class="container-fluid pt-4 px-4">
-                    <div class="row g-4">
-                        <div class="col-sm-6 col-xl-3">
-                            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-line fa-3x text-primary"></i>
-                                <div class="ms-3">
-                                    <p class="mb-2">Today Sale</p>
-                                    <h6 class="mb-0">$1234</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                                <div class="ms-3">
-                                    <p class="mb-2">Total Sale</p>
-                                    <h6 class="mb-0">$1234</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-area fa-3x text-primary"></i>
-                                <div class="ms-3">
-                                    <p class="mb-2">Today Revenue</p>
-                                    <h6 class="mb-0">$1234</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-pie fa-3x text-primary"></i>
-                                <div class="ms-3">
-                                    <p class="mb-2">Total Revenue</p>
-                                    <h6 class="mb-0">$1234</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <HeaderTemplate>
-                            <table class="table tab-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Başlık</th>
-                                        <th>Açıklama</th>
-                                        <th>Tarih</th>
-                                        <th>Delete</th>
-                                        <th>Update</th>
-                                        <th>Detail</th>
-                                    </tr>
-                                </thead>
-                        </HeaderTemplate>
-                        <ItemTemplate>
-
-                            @foreach (Announcement a in Model)
-                            {
-                                <tbody>
-                                    <tr>
-                                        <th>@a.DuyuruID</th>
-                                        <td>@a.DuyuruBaslik</td>
-                                        <td>@a.DuyuruIcerik</td>
-                                        <td>@a.DuyuruTarih</td>
-
-                                        <td><a asp-action="Delete" method="post" class="btn btn-danger">Delete</a></td>
-                                        <td><a asp-action="Delete" method="post" class="btn btn-group">Update</a></td>                                       
-                                        <th>Detail</th>
-                                    </tr>
-                                </tbody>
-                            }
-
-
-                        </ItemTemplate>
-
-                        <a class="btn btn-danger" asp-action="NewAnnouncement" method ="get"> Yeni Duyuru </a>
-
+                @*<div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-line fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Today Sale</p>
+                        <h6 class="mb-0">$1234</h6>
                     </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Total Sale</p>
+                        <h6 class="mb-0">$1234</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-area fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Today Revenue</p>
+                        <h6 class="mb-0">$1234</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Total Revenue</p>
+                        <h6 class="mb-0">$1234</h6>
+                    </div>
+                </div>
+            </div>*@
+
+                <a class="btn btn-danger" asp-action="NewAnnouncement" method="get"> Yeni Duyuru </a>
+
+                <HeaderTemplate>
+                    <table class="table tab-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Başlık</th>
+                                <th>Açıklama</th>
+                                <th>Tarih</th>
+                                <th>Delete</th>
+                                <th>Update</th>
+                            </tr>
+                        </thead>
+                </HeaderTemplate>
+                <ItemTemplate>
+
+                    @foreach (Announcement a in Model.announcements)
+                    {
+                        @await Html.PartialAsync("~/Views/Components/AnnouncementComp.cshtml", a);
+                    }
+
+                </ItemTemplate>
+            </div>
                 </div>
 
                 <!-- Content End -->

@@ -18,6 +18,17 @@ namespace WebProgramlamaAraProje.Models
 
         public void AddAnnouncement(Announcement a) => context.Announcements.Add(a);
 
-        public CollageDbContext GetContext() => context; 
+        public void DeleteAnnouncement(int? id)
+        {
+            if (id == null) return;
+            context.Announcements.Remove(Announcements.Where(i => i.DuyuruID == id).First());
+        }
+
+        public void UpdateAnnouncement(Announcement ano) => context.Announcements.Update(ano);
+
+        public void Save() => context.SaveChanges();
+
+        public Announcement FindAnnouncement(int? anoID) => context.Announcements.Find(anoID);
+        public Admin FindAdmin(int? adminID) => context.Admins.Find(adminID);
     }
 }

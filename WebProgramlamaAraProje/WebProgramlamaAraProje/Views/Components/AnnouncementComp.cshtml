@@ -1,0 +1,13 @@
+﻿@model Announcement
+
+<tbody>
+    <tr>
+        <th>@Model.DuyuruID</th>
+        <td>@Model.DuyuruBaslik</td>
+        <td>@Model.DuyuruIcerik</td>
+        <td>@Model.DuyuruTarih</td>
+
+        <td><a asp-controller="Home" asp-action="Delete" asp-route-anoID="@Model.DuyuruID" class="btn btn-danger">Delete</a></td>
+        <td><a asp-controller="Home" asp-action="UpdateAnnouncement" asp-route-anoID="@Model.DuyuruID" class="btn btn-group">Update</a></td>
+    </tr>
+</tbody>
