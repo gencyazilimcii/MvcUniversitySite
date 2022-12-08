@@ -11,6 +11,7 @@ namespace WebProgramlamaAraProje.Models
         [Key]
         public int DuyuruID { get; set; }
         public string DuyuruBaslik { get; set; }
+        
         public string DuyuruIcerik { get; set; }
         public DateTime? DuyuruTarih { get; set; }
         
