@@ -139,7 +139,7 @@ namespace WebProgramlamaAraProje.Controllers
                 repository.AddAnnouncement(a);
                 repository.Save();
 
-                return RedirectToAction("Admin");
+                return RedirectToAction("Admin", CurrentAdmin);
             }
             else
             {
