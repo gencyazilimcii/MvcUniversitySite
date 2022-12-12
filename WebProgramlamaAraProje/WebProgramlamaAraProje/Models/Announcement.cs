@@ -8,6 +8,7 @@ namespace WebProgramlamaAraProje.Models
 {
     public class Announcement
     {
+
         [Key]
         public int DuyuruID { get; set; }
         public string DuyuruBaslik { get; set; }

@@ -2,9 +2,9 @@
 @model IQueryable<Announcement>
 
 @{
+
     ViewData["Title"] = "Announcement";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 
 }
 
@@ -20,11 +20,10 @@
 
                 @foreach (var x in Model)
                 {
+
                     @await Html.PartialAsync("~/Views/Components/AnnouncementSideBarCompcshtml.cshtml", x);
+
                 }
-
-
-
 
             </div>
         </div>

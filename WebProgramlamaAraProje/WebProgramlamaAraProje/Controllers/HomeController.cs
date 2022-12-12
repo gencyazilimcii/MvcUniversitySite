@@ -21,6 +21,7 @@ namespace WebProgramlamaAraProje.Controllers
 
         public HomeController(ICollageRepository c)
         {
+            
             repository = c;
         }
        
@@ -151,7 +152,9 @@ namespace WebProgramlamaAraProje.Controllers
 
         public IActionResult Announcement()
         {
+
             return View(repository.Announcements);
+
         }
 
         public IActionResult Privacy()

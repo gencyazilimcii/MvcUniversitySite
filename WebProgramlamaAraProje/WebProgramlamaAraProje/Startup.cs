@@ -25,6 +25,11 @@ namespace WebProgramlamaAraProje
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //BU metot aracýlýðyla uygulamamýzýn içerisinde kullanacaðýmýz bileþenlerin ayarlarýný yapabiliriz.
+            //COnfigures Services metodu içerisinde uygulamanýn kullancaðý servisler eklenir ve konfigure edilir.
+            //Servisleriyse belli bir iþi yapmaktan sorumlu kod parçalarý, sýnýflar ya da kütüphaneler gibi düþünebilirsiniz. 
+            //Kýsaca onlara bileþenler de diyebilirsiniz.
+
             services.AddControllersWithViews();
 
             services.AddDbContext<CollageDbContext>(opts => {
@@ -37,13 +42,19 @@ namespace WebProgramlamaAraProje
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages();
-            app.UseStaticFiles();
+            // Bu metot uygulamamýza gelen HTTP isteklerini hangi aþamalardan geçirecek bir HTTP cevabý oluþturacaðýmýzý belirttiðimiz metottur.
+            //Startup içerisinde bu metodun doldurulmasý ve doðru ayarlanmasý gereklidir.
 
-            app.UseAuthentication();
+            app.UseDeveloperExceptionPage(); //Geliþtirici Ýstisna Sayfasýný Kullan
+            app.UseStatusCodePages(); //Durum kodu sayfalarýný kullan
+            app.UseStaticFiles(); //Statik Dosyalarý Kullan
 
-            app.UseRouting();
+
+            app.UseAuthentication(); //Kimlik Doðrulamayý Kullan
+
+
+            app.UseRouting(); //Yönlendirmeyi Kullan
+
 
             app.UseEndpoints(endpoints =>
             {
